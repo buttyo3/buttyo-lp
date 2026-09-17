@@ -198,6 +198,28 @@ footer nav{display:flex;gap:20px;flex-wrap:wrap}
 .sticky-cta .btn-line{width:100%;justify-content:center}
 @media (max-width:720px){.sticky-cta{display:flex}}
 
+/* ===== スマホ向けの調整 ===== */
+@media (max-width:720px){
+  body{font-size:.98rem}
+  .wrap{width:min(1080px,100% - 32px)}
+  section.block{padding:56px 0}
+  .final{padding:64px 0}
+  .hero{padding:48px 0 60px}
+  .hero .wrap{padding-left:20px}
+  .hero-lead{margin-top:26px;font-size:1rem}
+  .hero-cta{margin-top:26px}
+  .answer{position:static;padding:24px 20px 20px 34px;min-height:0}
+  .answer::before{left:16px}
+  .voices::before,.voices::after{width:24px}
+  .voice{flex:0 0 min(80vw,300px);padding:18px 20px}
+  .appendix{grid-template-columns:1fr;gap:26px}
+  .coach{padding:22px 20px;margin-top:36px}
+  .btn-line{width:100%;justify-content:center}
+  .hero-cta .btn-line,.tokuten-cta .btn-line{width:100%}
+  .final .btn-line{width:100%}
+  .toc a{grid-template-columns:1fr;gap:2px;padding:16px 4px}
+  .toc .dots{font-size:.8rem}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -460,7 +482,7 @@ const VOICES = [
 const track = document.getElementById("voicesTrack");
 const voiceHTML = v => `<figure class="voice"><p>${v.text}</p><cite>${v.from}</cite></figure>`;
 // 同じ並びを2周分置くことで、途切れずに流れます
-track.innerHTML = VOICES.map(voiceHTML).join("") + VOICES.map(voiceHTML).join("");
+if (track) track.innerHTML = VOICES.map(voiceHTML).join("") + VOICES.map(voiceHTML).join("");
 
 /* ====== 登録特典（付録）：増えたらここに追加するだけ ====== */
 const TOKUTEN = [
